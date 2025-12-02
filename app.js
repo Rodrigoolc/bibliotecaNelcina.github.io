@@ -1,4 +1,4 @@
-const IP = "http://SEU_IP_AQUI";
+const IP = "http://192.168.1.17";
 
 async function atualizar() {
   let res = await fetch(IP + "/api/estado");
