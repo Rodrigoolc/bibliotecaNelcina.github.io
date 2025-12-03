@@ -7,15 +7,23 @@
 </head>
 <body>
 
+<div id="statusBar">
+  <span id="statusDot" class="desconectado"></span>
+  <span id="statusTexto">Desconectado</span>
+  <span id="statusIP"></span>
+  <span id="statusQtde"></span>
+</div>
+
 <div id="container">
   <h1>Leitor de Livros</h1>
-  <div id="conteudo"></div>
+
+  <div id="gradeLivros" class="grid"></div>
 
   <div id="botoes">
-    <button onclick="enviar(0)">↑</button>
-    <button onclick="enviar(1)">↓</button>
-    <button onclick="enviar(2)">OK</button>
-    <button onclick="enviar(3)">Voltar</button>
+    <button onclick="enviar(0)" class="btn round">▲</button>
+    <button onclick="enviar(1)" class="btn round">▼</button>
+    <button onclick="enviar(2)" class="btn round">●</button>
+    <button onclick="enviar(3)" class="btn round">✖</button>
   </div>
 </div>
 

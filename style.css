@@ -6,37 +6,80 @@ body {
   padding-top: 40px;
 }
 
+/* BARRA DE STATUS */
+#statusBar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#statusDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.conectado { background: #00cc44; }
+.desconectado { background: #cc0000; }
+
+/* CONTAINER CENTRAL */
 #container {
-  width: 420px;
+  width: 520px;
   background: white;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 10px #bbb;
+  text-align: center;
 }
 
-#conteudo {
-  min-height: 200px;
-  white-space: pre-line;
-  line-height: 1.5;
-  font-size: 18px;
-}
-
-#botoes {
+/* GRADE 3x4 */
+.grid {
   margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px;
 }
 
-button {
-  width: 80px;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 8px;
-  border: none;
+.cardLivro {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 70px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.cardSelecionado {
+  background: #d7ecff;
+  border: 2px solid #0080ff;
+}
+
+/* BOTÕES */
+#botoes {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  width: 60px;
+  height: 60px;
   background: #0077cc;
   color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
   cursor: pointer;
 }
-button:hover {
+
+.btn:hover {
   background: #005fa3;
 }
