@@ -1,4 +1,4 @@
-const IP = "http://SEU_IP_AQUI";
+const IP = "192.168.1.17";
 let conectado = false;
 let intervaloAtualizacao;
 
