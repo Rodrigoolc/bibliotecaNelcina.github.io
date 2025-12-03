@@ -2,28 +2,46 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leitor ESP</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<div id="statusBar">
-  <span id="statusDot" class="desconectado"></span>
-  <span id="statusTexto">Desconectado</span>
-  <span id="statusIP"></span>
-  <span id="statusQtde"></span>
+<div id="status-bar">
+  <div id="conexao-status">
+    <span class="status-icon" id="status-icon">●</span>
+    <span id="status-text">Desconectado</span>
+  </div>
+  <div id="info-ip">IP: <span id="ip-text">Não conectado</span></div>
+  <div id="info-livros">Livros: <span id="livros-count">0</span></div>
 </div>
 
 <div id="container">
-  <h1>Leitor de Livros</h1>
+  <h1><i class="fas fa-book-open"></i> Leitor de Livros</h1>
+  
+  <div id="livros-grid"></div>
+  
+  <div id="conteudo" class="menu-conteudo"></div>
 
-  <div id="gradeLivros" class="grid"></div>
-
-  <div id="botoes">
-    <button onclick="enviar(0)" class="btn round">▲</button>
-    <button onclick="enviar(1)" class="btn round">▼</button>
-    <button onclick="enviar(2)" class="btn round">●</button>
-    <button onclick="enviar(3)" class="btn round">✖</button>
+  <div id="botoes-container">
+    <div id="botoes">
+      <button class="btn-nav" onclick="enviar(0)" title="Para cima">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      <div class="botoes-centrais">
+        <button class="btn-acao btn-voltar" onclick="enviar(3)" title="Voltar/Cancelar">
+          <i class="fas fa-times"></i>
+        </button>
+        <button class="btn-acao btn-confirmar" onclick="enviar(2)" title="Confirmar">
+          <i class="fas fa-circle"></i>
+        </button>
+      </div>
+      <button class="btn-nav" onclick="enviar(1)" title="Para baixo">
+        <i class="fas fa-arrow-down"></i>
+      </button>
+    </div>
   </div>
 </div>
 

@@ -1,85 +1,213 @@
-body {
-  background: #f2f2f2;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  padding-top: 40px;
+:root {
+  --primary-color: #0077cc;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --border-radius: 50px;
 }
 
-/* BARRA DE STATUS */
-#statusBar {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#status-bar {
   position: fixed;
   top: 10px;
   left: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 15px;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 20px;
+  align-items: center;
   font-size: 14px;
+  z-index: 1000;
+}
+
+#conexao-status {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-#statusDot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
+.status-icon {
+  font-size: 12px;
+  transition: color 0.3s;
 }
 
-.conectado { background: #00cc44; }
-.desconectado { background: #cc0000; }
+.conectado {
+  color: var(--success-color);
+}
 
-/* CONTAINER CENTRAL */
+.desconectado {
+  color: var(--danger-color);
+}
+
 #container {
-  width: 520px;
+  width: 500px;
+  max-width: 95vw;
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #bbb;
-  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-top: 60px;
 }
 
-/* GRADE 3x4 */
-.grid {
-  margin-top: 20px;
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#livros-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 12px;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 15px;
+  min-height: 400px;
+  margin-bottom: 25px;
 }
 
-.cardLivro {
-  background: #fafafa;
-  border-radius: 10px;
-  padding: 10px;
-  min-height: 70px;
-  font-size: 15px;
+.livro-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px #ccc;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-size: 15px;
+  min-height: 100px;
 }
 
-.cardSelecionado {
-  background: #d7ecff;
-  border: 2px solid #0080ff;
+.livro-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* BOTÕES */
-#botoes {
-  margin-top: 25px;
+.livro-card.selecionado {
+  border-color: var(--primary-color);
+  background: #e3f2fd;
+}
+
+.livro-card.lido {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.livro-status {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #666;
+}
+
+.livro-card.lido .livro-status {
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.menu-conteudo {
+  min-height: 200px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 20px 0;
+  white-space: pre-line;
+  line-height: 1.6;
+  font-size: 16px;
+  display: none;
+}
+
+.menu-conteudo.ativo {
+  display: block;
+}
+
+#botoes-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-.btn {
+#botoes {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn-nav, .btn-acao {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-nav {
   width: 60px;
   height: 60px;
-  background: #0077cc;
+  background: var(--primary-color);
   color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 28px;
-  cursor: pointer;
+  font-size: 24px;
 }
 
-.btn:hover {
+.btn-nav:hover {
   background: #005fa3;
+  transform: scale(1.05);
+}
+
+.botoes-centrais {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-acao {
+  width: 70px;
+  height: 70px;
+  font-size: 28px;
+}
+
+.btn-confirmar {
+  background: var(--success-color);
+  color: white;
+}
+
+.btn-confirmar:hover {
+  background: #218838;
+  transform: scale(1.05);
+}
+
+.btn-voltar {
+  background: var(--danger-color);
+  color: white;
+}
+
+.btn-voltar:hover {
+  background: #c82333;
+  transform: scale(1.05);
 }
